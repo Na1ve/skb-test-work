@@ -1,0 +1,261 @@
+
+.b-add {
+  margin-left: 30px;
+}
+
+.b-list {
+  margin: 20px 0;
+  counter-reset: task-list;
+}
+
+.b-list-item {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  margin: 10px 0;
+  background: #fff;
+  transition: transform .1s linear;
+}
+
+.b-list-item__draggable {
+  z-index: 1;
+  transition: none;
+  box-shadow: 0 0 2px rgba(0,0,0,.3);
+}
+
+.b-list-item__up {
+  transform: translateY(-100%) translateY(-10px);
+}
+
+.b-list-item__down {
+  transform: translateY(100%) translateY(10px);
+}
+
+.b-list-item:hover {
+  
+}
+
+.b-list-item_number {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  counter-increment: task-list;
+  text-align: right;
+  color: #e7e7e7;
+  width: 20px;
+  padding: 5px 10px 5px 0;
+}
+
+.b-list-item_number::before {
+  content: counter(task-list);
+}
+
+.b-list-item_closed {
+  position: relative;
+  padding: 0;
+  margin: 3px;
+  width: 25px;
+}
+
+.b-list-item_content {
+  position: relative;
+  padding: 5px 20px 5px 5px;
+  flex: 1 1;
+  overflow: hidden;
+  max-height: 30px;
+  transition: 
+    max-height .2s cubic-bezier(.5,0,.5,1);
+}
+
+.b-list-item__opened
+.b-list-item_content {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.b-list-item_content_caption {
+  position: absolute;
+  display: block;
+  left: 5px;
+  right: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: .2s linear;
+  transform-origin: 50% 0;
+  transition-property: opacity, transform;
+}
+
+.b-list-item__failed
+.b-list-item_content_caption {
+  color: #f00;
+}
+
+.b-list-item__opened
+.b-list-item_content_caption {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.b-list-item_content_caption__big {
+  margin: 0 0 20px;
+  font: 24px/1.2 "PT Serif", serif;
+  transition: .2s linear;
+  transform-origin: 50% 0;
+  transition-property: opacity, transform;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+@media(max-width: 599px) {
+  .b-list-item_content_caption__big {
+    font-size: 16px;
+  }
+}
+
+.b-list-item__opened
+.b-list-item_content_caption__big {
+  opacity: 1;
+  transform: none;
+}
+
+.b-list-item_content_description {
+  white-space: pre-line;
+  transition: .2s linear;
+  transform-origin: 50% 0;
+  transition-property: opacity, transform;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.b-list-item__opened
+.b-list-item_content_description {
+  transition-delay: .1s;
+  opacity: 1;
+  transform: none;
+}
+
+.b-list-item_deadline {
+  position: relative;
+  padding: 5px 20px 5px 20px;
+}
+
+.b-list-item_deadline::before {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  width: 20px;
+  background: #fff;
+  content: '';
+}
+
+.b-list-item_deadline::after {
+  position: absolute;
+  font: 24px "PT Serif", serif;
+  content: '!';
+  right: 10px;
+  top: -2px;
+  display: none;
+}
+
+.b-list-item__failed
+.b-list-item_deadline::after {
+  display: block;
+  color: #f00;
+}
+
+.b-list-item__1-day-left
+.b-list-item_deadline::after {
+  display: block;
+  color: #ff7e00;
+}
+
+.b-list-item__2-days-left
+.b-list-item_deadline::after {
+  display: block;
+  color: #ee0;
+}
+
+.b-list-item__3-days-left
+.b-list-item_deadline::after {
+  display: block;
+  color: #0f0;
+}
+
+.b-list-item_checker {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 5px 5px 5px 15px;
+}
+
+.b-list-item_checker::before {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  border: solid 2px;
+  margin: 0 -7px;
+  width: 8px;
+  height: 8px;
+  border-color: 
+    rgba(0,0,0,0)
+    rgba(0,0,0,.3)
+    rgba(0,0,0,.3)
+    rgba(0,0,0,0);
+  transform: rotate(45deg);
+  transition: linear .2s;
+  transition-property: margin, transform;
+  content: '';
+}
+
+.b-list-item__opened
+.b-list-item_checker::before {
+  margin: 10px -7px;
+  transform: rotate(-135deg);
+}
+
+.b-list-item_content_button-list {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  transition: .2s linear;
+  transform-origin: 50% 0;
+  transition-property: opacity, transform;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.b-list-item_content_button-list_separator {
+  width: 10px;
+}
+
+.b-list-item__opened
+.b-list-item_content_button-list {
+  transition-delay: .25s;
+  opacity: 1;
+  transform: none;
+}
+
+.b-remove-data {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: block;
+  border: 0 none;
+  font: 12px "PT Sans", sans-serif;
+  text-decoration: underline;
+  text-align: right;
+  color: #000;
+  padding: 2px 10px 4px;
+  background: rgba(0,0,0,.3);
+  cursor: pointer;
+}
+
+.b-remove-data::after {
+  display: inline-block;
+  margin-left: 10px;
+  content: 'x';
+}

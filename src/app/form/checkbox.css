@@ -1,0 +1,67 @@
+
+.f-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.f-checkbox_placeholder {
+  position: relative;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  color: #b0b0b0;
+}
+
+.f-checkbox_placeholder::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid;
+  border-radius: 2px;
+  content: '';
+}
+
+.f-checkbox_placeholder::after {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 20%;
+  border: solid;
+  border-width: 0 0 1.5px 1.5px;
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+  content: '';
+}
+
+.f-checkbox:checked + 
+.f-checkbox_placeholder {
+  color: #fff;
+}
+
+.f-checkbox:hover + 
+.f-checkbox_placeholder::before {
+  color: #80b027;
+}
+
+.f-checkbox:checked + 
+.f-checkbox_placeholder::before {
+  background: #80b027;
+  color: #80b027;
+}
+
+.f-checkbox:focus + 
+.f-checkbox_placeholder::before {
+  box-shadow: 0 0 2px #80b027;
+}
+
+.f-checkbox_placeholder__box-sized {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+}

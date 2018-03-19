@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,400i,700&subset=cyrillic');
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.33 "PT Sans", sans-serif;
+  background: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  display: table;
+  height: 0;
+  content: '';
+}

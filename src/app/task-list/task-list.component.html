@@ -1,0 +1,56 @@
+<button class="f-button f-button__green-hole b-add" (click)="createTask()">
+  add new task
+</button>
+<div class="b-list">
+  <div
+    *ngFor="let task of taskService.taskList"
+    class="b-list-item"
+    [class.b-list-item__opened]="task == switchedTask"
+    [class.b-list-item__failed]="calcTiming(task) == 0"
+    [class.b-list-item__1-day-left]="calcTiming(task) == 1"
+    [class.b-list-item__2-days-left]="calcTiming(task) == 2"
+    [class.b-list-item__3-days-left]="calcTiming(task) == 3"
+    [class.b-list-item__draggable]="draggableTask == task"
+    (click)="toggleTask(task)"
+    (mousedown)="startSort($event, task)"
+  >
+    <span class="b-list-item_number"></span>
+    <label class="b-list-item_closed" (click)="stopBubbling($event)">
+      <input
+        type="checkbox"
+        [(ngModel)]="task.closed"
+        (change)="setState(task)"
+        class="f-checkbox"
+      >
+      <span class="f-checkbox_placeholder f-checkbox_placeholder__box-sized"></span>
+    </label>
+    <span class="b-list-item_content">
+      <span class="b-list-item_content_caption">{{ task.name }}</span>
+      <h2
+        class="b-list-item_content_caption__big"
+      >{{ task.name }}</h2>
+      <p class="b-list-item_content_description">{{ task.description }}</p>
+      <div
+        class="b-list-item_content_button-list"
+        (click)="stopBubbling($event)"
+      >
+        <span
+          class="f-button f-button__green-hole"
+          (click)="editTask(task)"
+          tab-index="-1"
+        >edit</span>
+        <span class="b-list-item_content_button-list_separator"></span>
+        <span
+          class="f-button f-button__green-hole"
+          (click)="removeTask(task)"
+          tab-index="-1"
+        >remove</span>
+      </div>
+    </span>
+    <span class="b-list-item_deadline" title="days remaining to the deadline">
+      {{ calcTiming(task) }}
+    </span>
+    <span class="b-list-item_checker"></span>
+  </div>
+</div>
+<button class="b-remove-data" (click)="taskService.removeData()">remove all data from local storage</button>

@@ -1,0 +1,29 @@
+
+.f-input {
+  position: relative;
+  display: block;
+  font-family: "PT Sans",sans-serif;
+  font-size: inherit;
+  width: 100%;
+  min-width: 80px;
+  border: 1px solid #d0d8db;
+  border-radius: 1px;
+  resize: none;
+  height: 36px;
+  box-sizing: border-box;
+  transition: .1s linear box-shadow;
+  box-shadow: 0 0 rgba(255,0,0,0);
+  padding: 4px 9px 6px;
+  outline: 0 none;
+}
+
+.f-input_wrapper {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.f-textarea {
+  height: 96px;
+  min-height: 36px;
+  resize: vertical;
+}

@@ -1,0 +1,20 @@
+.b-wrapper {
+  width: 60%;
+  max-width: 540px;
+  min-width: 280px;
+}
+
+.b-caption {
+  margin: 0 0 20px;
+  text-align: center;
+  font: 24px/1.2 "PT Serif", serif;
+}
+
+.b-submit_wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.b-submit_separator {
+  width: 10px;
+}

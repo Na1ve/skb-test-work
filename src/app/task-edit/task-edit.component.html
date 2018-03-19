@@ -1,0 +1,56 @@
+<div
+  class="p-overlay"
+  *ngIf="taskService.selectedTask" (click)="cancel($event)"
+  [class.p-overlay__hidden]="hide"
+>
+  <div
+    class="p-container"
+    (click)="stopBubbling($event)"
+    [class.p-container__hidden]="hide"
+  >
+    <button class="p-close" (click)="cancel($event)">x</button>
+    <div class="p-inner b-wrapper">
+      <h2 class="b-caption">Task edit</h2>
+      <form name="editorForm" (submit)="applyChanges()">
+        <label class="f-input_wrapper">
+          <span class="f-input_label">caption:</span>
+          <textarea
+            class="f-input f-textarea"
+            [(ngModel)]="taskService.selectedTask.name"
+            placeholder="caption"
+            autofocus
+            name="caption"
+          ></textarea>
+        </label>
+        <label class="f-input_wrapper">
+          <span class="f-input_label">description:</span>
+          <textarea
+            class="f-input f-textarea"
+            [(ngModel)]="taskService.selectedTask.description"
+            placeholder="description"
+            name="description"
+          ></textarea>
+        </label>
+        <label class="f-input_wrapper">
+          <span class="f-input_label">deadline:</span>
+          <input
+            class="f-input"
+            type="date"
+            [(ngModel)]="taskService.selectedTask.deadline"
+            placeholder="deadline"
+            name="deadline"
+          >
+        </label>
+        <div class="b-submit_wrapper">
+          <button class="f-button f-button__green" type="submit">
+            apply
+          </button>
+          <span class="b-submit_separator"></span>
+          <button class="f-button f-button__green-hole" (click)="cancel($event)">
+            cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+.p-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  background: rgba(109,127,135,.35);
+  cursor: pointer;
+  animation: overlay .2s linear;
+  transition: .2s linear background;
+}
+
+.p-overlay__hidden {
+  background: rgba(109,127,135,0);
+}
+
+.p-container {
+  position: relative;
+  background: #fff;
+  display: inline-block;
+  margin: 100px;
+  cursor: default;
+  animation: container .2s cubic-bezier(1,2,.8,.8);
+  transition: .2s cubic-bezier(.2,.2,0,-1) transform;
+}
+
+@media (max-width: 599px) {
+  .p-container {
+    margin: 0;
+  }
+}
+
+.p-container__hidden {
+  transform: scale(0);
+}
+
+.p-inner {
+  padding: 40px 40px 50px;
+}
+
+@media (max-width: 599px) {
+  .p-inner {
+    padding: 40px 20px;
+  }
+}
+
+.p-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: transparent;
+  border: 0 none;
+  cursor: pointer;
+}
+
+.p-close::before,
+.p-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(45deg);
+  content: '';
+}
+
+.p-close::before {
+  width: 15px;
+  margin: 0 -7px;
+  border-top: 1px solid #aaa;
+}
+
+.p-close::after {
+  height: 15px;
+  margin: -7px 0;
+  border-left: 1px solid #aaa;
+}
+
+.p-close:hover::before,
+.p-close:hover::after {
+  border-color: #5c7e1d;
+}
+
+@keyframes overlay {
+  0% {
+    background: rgba(109,127,135,0);
+  }
+  100% {
+    background: rgba(109,127,135,.35);
+  }
+}
+
+@keyframes container {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: none;
+  }
+}

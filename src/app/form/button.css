@@ -1,0 +1,51 @@
+
+.f-button {
+  display: inline-block;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 100;
+  font-size: inherit;
+  border: 1px solid;
+  border-radius: 2px;
+  text-align: center;
+  padding: .3em .833em .4em;
+  min-width: 80px;
+  cursor: pointer;
+  text-decoration: none !important;
+  box-sizing: border-box;
+  outline: 0 none;
+}
+
+.f-button:active {
+  transform: translate3d(1px,1px,0);
+}
+
+.f-button__green {
+  color: #fff;
+  border-color: #80b027;
+  background: #80b027;
+}
+
+.f-button__green-hole {
+  color: #80b027;
+  background-color: transparent;
+}
+
+.f-button__green:hover,
+.f-button__green-hole:hover {
+  color: #fff;
+  border-color: #6d9622;
+  background: #6d9622;
+}
+
+.f-button__green-hole:focus,
+.f-button__green:focus {
+  box-shadow: 0 0 4px #80b027;
+}
+
+.f-button__green-hole:active,
+.f-button__green:active {
+  color: #fff;
+  border-color: #5c7e1d;
+  background: #5c7e1d;
+}
+

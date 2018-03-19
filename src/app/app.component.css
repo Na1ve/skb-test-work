@@ -1,0 +1,27 @@
+.app-outer {
+  width: 100vw;
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  padding: 0 45px;
+  max-width: 1190px;
+}
+
+@media (max-width: 599px) {
+  .app-wrapper {
+    padding: 0 20px;
+  }
+}
+
+.app-wrapper__selected {
+  filter: blur(1.5px);
+}
+
+.app-caption {
+  text-align: center;
+  margin: 10px 0 20px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #e7e7e7;
+  font: 32px/1.2 "PT Serif", serif;
+}
